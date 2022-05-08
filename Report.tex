@@ -1,0 +1,80 @@
+% LaTeX Template for short student reports.
+% Citations should be in bibtex format and go in references.bib
+\documentclass[11pt]{article}
+\usepackage[top=3cm, bottom=3cm, left = 2cm, right = 2cm]{geometry}  
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+\usepackage{amsmath,amssymb}  
+\usepackage{bm}  
+\usepackage[pdftex,bookmarks,colorlinks,breaklinks]{hyperref}  
+\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=black} % black links, for printed output
+\usepackage{memhfixc} 
+\usepackage{pdfsync}  
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\title{Responsible Data Science Course Project}
+\author{Claire Saint-Donat, Xiangyue Wang}
+\date{Spring 2022}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+
+Introduction of the assignment for RDS for a viewer who may not be in the class.
+
+\pagebreak
+
+\section{Background}
+
+General Information about our chosen ADS.
+\begin{itemize}
+\item What is the purpose of this ADS and it's stated goals
+\item If the ADS has multiple goals, explain any trade-offs that these goals may introduce.
+\end{itemize}
+
+\pagebreak
+
+\section{Input and Output}
+
+\begin{itemize}
+	\item Describe the data used by this ADS.  How was this data collected or selected?
+	\item For each input feature, describe its datatype, give information on missing values and on the value distribution. Show pairwise correlations between features if appropriate.  Run any other reasonable profiling of the input that you find interesting or appropriate
+	\item What is the output of the system (e.g. is it a class label, a score, a probability or some other type of output) and how do we interpret it?
+\end{itemize}
+
+\pagebreak
+
+\section{Implementation and Validation}
+Present your understanding of the code that implements this ADS.  This code was implemented by others in this part of the assignment.  Your goal here is to demonstrate that you understand the implementation at a high level.
+\begin{itemize}
+\item Describe data cleaning and any other pre-processing
+\item Give high-level information about the implementation of the system
+\item How was the ADS validated?  How do we know that it meets its stated goal(s)?
+\end{itemize}
+
+\pagebreak
+
+\section{Outcomes}
+
+\begin{itemize}
+\item Analyze the effectiveness (accuracy) of the ADS by comparing it's performance across subpopulations
+\item Select one or more fairness or diversity measures, justify your choice of these measures for the ADS in question and quantify the fairness or diversity of this ADS.
+\item Develop additional methods for analyzing ADS performance: think about stability, robustness, performance on difficult or otherwise important examples (in the style of LIME) or any other property that you believe is important to check for this ADS
+\end{itemize}
+
+\pagebreak
+
+\section{Conclusion \& Summary}
+\begin{itemize}
+\item Do you believe that the data was appropriate for this ADS?  
+\item Do you believe the implementation is robust, accurate and fair?  Discuss any choice of accuracy and fairness measures and explain which stakeholders may find these measures appropriate.
+\item Would you be comfortable deploying this ADS in the public sector, or in industry?  Why so or why not?
+\item What improvements do you recommend to the data collection, processing or analysis methodology?
+\end{itemize}
+\bibliographystyle{abbrv}
+% \bibliography{references}  % need to put bibtex references in references.bib 
+\end{document}
