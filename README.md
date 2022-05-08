@@ -2,7 +2,7 @@
 # Final Project Proposal
 
 ## Description and Goal
-For our final project, we wish to examine an Automated Decision System (ADS), developed by the Kaggle user Josh, that predicts whether data scientists will seek new jobs. Using a set of features about a given data scientist, the ADS categorizes them as either “job seeker” or “non-job seeker”. The ADS, published on Kaggle, consists of data-preprocessing, data exploration, and model-fitting that utilizes SVM, decision trees, random forests, logistic regression, and KNN. Our aim is to design a nutritional label for the ADS that examines the bias in the data, the processing, and one ML model used in this ADS.
+For our final project, we wish to examine an Automated Decision System (ADS), developed by the Kaggle user [Josh](https://www.kaggle.com/joshuaswords), that predicts whether data scientists will seek new jobs. Using a set of features about a given data scientist, the ADS categorizes them as either “job seeker” or “non-job seeker”. The ADS, published on Kaggle, consists of data-preprocessing, data exploration, and model-fitting that utilizes SVM, decision trees, random forests, logistic regression, and KNN. Our aim is to design a nutritional label for the ADS that examines the bias in the data, the processing, and one ML model used in this ADS.
 
 ## Data
 The data were published by a Data Science company looking to hire data scientists who successfully passed some certification courses conducted by the company. The algorithm is designed to understand the factors that lead a candidate to leave a current job for the purpose of potentially recruiting them as well as to provide valuable HR research.
