@@ -8,12 +8,13 @@
 \usepackage{amsmath,amssymb}  
 \usepackage{bm}  
 \usepackage[pdftex,bookmarks,colorlinks,breaklinks]{hyperref}  
-\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=black} % black links, for printed output
+\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=blue} % black links, for printed output
 \usepackage{memhfixc} 
 \usepackage{pdfsync}  
 \usepackage{fancyhdr}
 \usepackage{indentfirst}
 \usepackage[affil-it]{authblk}
+
 \renewcommand\Affilfont{\fontsize{9}{10.8}\itshape}
 \pagestyle{fancy}
 
@@ -36,7 +37,12 @@ In this project, we attempt to help NYC and other municipalities by designing a`
 \pagebreak
 
 \section{Background}
-The Automated Decision System (ADS) that we chose to examine is from the Human Resources and Hiring space.  In particular, we wish to examine a top entry from an HR Analytics Kaggle competition published here.  The source of these data come from an active company in the Big Data and Data Science space that is looking to hire data scientists amongst a group of candidates who have taken training courses hosted by the company.  Many candidates sign up for training and the firm would like to know which trainees would be interested in working for the company or which are currently looking for new employment.  Targeting these candidates reduces costs and time associated with hiring data scientists.  In addition, a model of this kind would also help improve the quality of these trainings and the planning of courses that might help categorize candidates.  The desired outcome of this model is to accurately predict the probability that a given trainee is looking for a new job as well as the probability that a candidate would be interesting in working for the company.  The ultimate goal of this ADS is to determine which trainees should be invited in interview for data science positions at the company.
+In recent years, the growing demands for jobs in data science have driven the creation of a myriad of degree programs, massive online open courses, online certification programs, and boot camps. While the abundance of those learning resources has made data science accessible to a wide range of people looking to enter the field, the variety of credentials has also made it difficult for companies to evaluate the qualification of job seekers. The process of hiring data scientists is often both expensive and time-consuming. Therefore, companies have the incentives to hire qualified data scientists and keep them from leaving. 
+
+As as a result of this trend, the Automated Decision System (ADS) that we chose to examine is from the Human Resources and Hiring space.  In particular, we wish to examine a top entry from an HR Analytics Kaggle competition published \href{https://www.kaggle.com/code/joshuaswords/awesome-hr-data-visualization-prediction/notebook}{here}.  The source of these data come from an active company in the Big Data and Data Science space that is looking to hire data scientists amongst a group of candidates who have taken training courses hosted by the company.  Many candidates sign up for training and the firm would like to know which trainees would be interested in working for the company or which are currently looking for new employment.  Targeting these candidates reduces costs and time associated with hiring data scientists.  In addition, a model of this kind would also help improve the quality of these trainings and the planning of courses that might help categorize candidates.  The desired outcome of this model is to accurately predict the probability that a given trainee is looking for a new job as well as the probability that a candidate would be interesting in working for the company.  The ultimate goal of this ADS is to determine which trainees should be invited to interview for data science positions at the company.
+
+
+In the course of our analysis, we will examine the data, the cleaning process, and the system to evaluate whether the ADS discriminates on the basis of gender or socioeconomic status. If present, such discrimination could result in certain groups of  employees receiving less frequent training, promotions and other benefits. Our aim is to design a nutritional label for the ADS that examines the bias in the data, the processing, and one ML model used in this ADS. 
 
 Possible trade-offs - candidates looking for a new job might not necessarily be interested in working for the company.  Candidates looking for a new job and interested in the company might not necessarily be the best candidates for DS roles at the company.
 
@@ -129,6 +135,8 @@ target 		 & int64 & 2 & 0.0 \% \\
 \end{table}
 
 
+In terms of relative distributions, this dataset is largely imbalanced on our target variable with 75\% of candidates not seeking a new job and only 25\% actively on the job market.  Discuss distributions.....
+
 
 
 \begin{itemize}
@@ -137,11 +145,20 @@ target 		 & int64 & 2 & 0.0 \% \\
 	\item What is the output of the system (e.g. is it a class label, a score, a probability or some other type of output) and how do we interpret it?
 \end{itemize}
 
-First we need to decide on which model we are using ultimately......  The output of the system is a probability representing the log odds that a candidate will look for a new position.
+
+
+The output of this ADS comes from a Logistic regression that was trained on a synthetically upsampled data set to correct for the datasets imbalance in the target variable.  As a result, the output can be interpreted as the probability of a candidate being on the job market (or of having a target value equal to 1).
+
+
 
 \pagebreak
 
 \section{Implementation and Validation}
+
+The ultimate model used for this RDS is a logistic regression trained on a dataset that was augmented using the Synthetic Minority Oversampling Technique (SMOTE).  Prior to training the model however, the creator made several choices pertaining to the preparation and pre-processing of the data that had an ultimate impact on it's results.
+
+
+
 Present your understanding of the code that implements this ADS.  This code was implemented by others in this part of the assignment.  Your goal here is to demonstrate that you understand the implementation at a high level.
 \begin{itemize}
 \item Describe data cleaning and any other pre-processing
