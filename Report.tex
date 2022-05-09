@@ -12,10 +12,14 @@
 \usepackage{memhfixc} 
 \usepackage{pdfsync}  
 \usepackage{fancyhdr}
+\usepackage{indentfirst}
+\usepackage[affil-it]{authblk}
+\renewcommand\Affilfont{\fontsize{9}{10.8}\itshape}
 \pagestyle{fancy}
 
 \title{Responsible Data Science Course Project}
 \author{Claire Saint-Donat, Xiangyue Wang}
+\affil{Center for Data Science, New York University}
 \date{Spring 2022}
 
 \begin{document}
@@ -46,13 +50,94 @@ Possible trade-offs - candidates looking for a new job might not necessarily be 
 
 \section{Input and Output}
 
-These data, made available by the company, are designed to understand the factors that lead a data scientist to search for a new job.  Important information pertaining to demographics, education and prior experience is made available (on an anonymized basis) from registered and enrolled candidates.  There is little information available about the geography of the candidate population in question or even the time during which this data was collected however we can gather than \ldots
+These data, made available by the company, are designed to understand the factors that lead a data scientist to search for a new job.  Important information pertaining to demographics, education and prior experience is made available (on an anonymized basis) from registered and enrolled candidates.  There is little information available about the geography of the candidate population in question or even the time during which this data was collected however we can discern from the data that they represent 123 different cities of varying levels of development.  The training dataset for the ADS comprises 19,158 candidates with the following 14 features describing each:
+
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ |p{4cm}||p{10cm}|  }
+ 
+ \hline
+ Feature 		& Description		\\
+ \hline
+enrollee\_id 	& Unique ID for candidate\\
+city			& Code given for candidate's city \\
+city\_development\_index & Development index of the city (scaled)\\
+gender		& Gender of candidate\\
+relevant\_experience & Relevant experience of candidate\\
+enrolled\_university & Type of University course enrolled if any \\
+
+education\_level & Education level of candidate\\
+
+major\_discipline & Education major discipline of candidate \\
+
+experience 	& Candidate total experience in years\\
+
+company\_size 	& Number of employees in current employer's company \\
+
+company\_type 	& Type of current employer\\
+
+last\_new\_job 	& Difference in years between previous job and current job \\
+
+training\_hours 	& training hours completed \\
+
+target 		& 0 - Not looking for job change, 1 – Looking for a job change\\
+ \hline
+\end{tabular}
+\end{table}
+
+
+
+The majority of these features are categorical (Nominal, Ordinal, Binary) some with high cardinality. The exceptions are ``city\_development\_index" and ``training hours" both of which are numeric. Other variables such as ``experience" and ``company\_size" which could potentially be numeric, are presented as aggregated categorical variables such as '50-99', '$<$10', '10000+', '5000-9999', '1000-4999', '10-49', '100-500', '500-999'. 
+
+Some features have large proportions of missing values, particularly 'gender', 'company\_type' and 'company\_size'.
+
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ |p{4cm}||p{2cm}| p{2.53cm}| p{1.5cm}|}
+ \hline
+ Feature 		& Data Type	& Distinct Values	& \% Null\\
+ \hline
+enrollee\_id 	& int64 & 19,158 & 0.0 \%	\\
+city			 & object & 123 & 0.0 \% \\
+city\_development\_index & float64 & 93 & 0.0 \% \\
+gender		& object & 4 & 23.5 \% \\
+relevant\_experience & object & 2 & 0.0 \%\\
+
+enrolled\_university & object & 4 & 2.0 \% \\
+
+education\_level & object & 6 & 2.4 \% \\
+
+major\_discipline  & object & 7 & 14.7 \% \\
+
+experience  	& object & 23 & 0.7 \% \\
+
+company\_size 	& object & 9 & 31.0 \% \\
+
+company\_type 	& object & 7 & 32.0 \%\\
+
+last\_new\_job 	& object & 7 & 2.2 \%\\
+
+training\_hours & int64 & 241 & 0.0 \%  \\
+
+target 		 & int64 & 2 & 0.0 \% \\
+ \hline
+\end{tabular}
+\end{table}
+
+
+
 
 \begin{itemize}
 	\item Describe the data used by this ADS.  How was this data collected or selected?
 	\item For each input feature, describe its datatype, give information on missing values and on the value distribution. Show pairwise correlations between features if appropriate.  Run any other reasonable profiling of the input that you find interesting or appropriate
 	\item What is the output of the system (e.g. is it a class label, a score, a probability or some other type of output) and how do we interpret it?
 \end{itemize}
+
+First we need to decide on which model we are using ultimately......  The output of the system is a probability representing the log odds that a candidate will look for a new position.
 
 \pagebreak
 
