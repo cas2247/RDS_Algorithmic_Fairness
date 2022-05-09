@@ -29,35 +29,27 @@
 
 \section{Introduction}
 
-In this project, we attempt to build an interpretability tool for an Automated Decision System (ADS). 
+The purpose of this project is to build an interpretability tool for an Automated Decision System (ADS) which we have chosen to audit.
 
-Automated Decision Systems (ADS) are in widespread use in government and industry, and a number of efforts are currently underway to regulate them.  New York City recently passed a law (Local Law 49 of 2018) that compels the development of procedures and recommendations that City agencies should follow when explaining the operation of an ADS to the public, and demonstrating that an ADS does not discriminate against individuals based on membership in protected groups.  
+Automated Decision Systems are in widespread use in government and industry, and a number of efforts are currently underway to regulate them.  New York City recently passed a law (Local Law 49 of 2018) that compels the development of procedures and recommendations that City agencies should follow when explaining the operation of an ADS to the public, and demonstrating that an ADS does not discriminate against individuals based on membership in protected groups.  
 
 In this project, we attempt to help NYC and other municipalities by designing a``nutritional label" (similar to a label used to evaluate food products) for an algorithmic system of our choice. 
 \pagebreak
 
 \section{Background}
-In recent years, the growing demands for jobs in data science have driven the creation of a myriad of degree programs, massive online open courses, online certification programs, and boot camps. While the abundance of those learning resources has made data science accessible to a wide range of people looking to enter the field, the variety of credentials has also made it difficult for companies to evaluate the qualification of job seekers. The process of hiring data scientists is often both expensive and time-consuming. Therefore, companies have the incentives to hire qualified data scientists and keep them from leaving. 
+In recent years, the growing demands for jobs in data science have driven the creation of a myriad of degree programs, massive online open courses, online certification programs, and boot camps. While the abundance of those learning resources has made data science accessible to a wide range of people looking to enter the field, the variety of credentials has also made it difficult for companies to evaluate the qualifications of job seekers. The process of hiring data scientists is often both expensive and time-consuming. Therefore, companies have incentives to hire qualified data scientists and keep them from leaving. 
 
-As as a result of this trend, the Automated Decision System (ADS) that we chose to examine is from the Human Resources and Hiring space.  In particular, we wish to examine a top entry from an HR Analytics Kaggle competition published \href{https://www.kaggle.com/code/joshuaswords/awesome-hr-data-visualization-prediction/notebook}{here}.  The source of these data come from an active company in the Big Data and Data Science space that is looking to hire data scientists amongst a group of candidates who have taken training courses hosted by the company.  Many candidates sign up for training and the firm would like to know which trainees would be interested in working for the company or which are currently looking for new employment.  Targeting these candidates reduces costs and time associated with hiring data scientists.  In addition, a model of this kind would also help improve the quality of these trainings and the planning of courses that might help categorize candidates.  The desired outcome of this model is to accurately predict the probability that a given trainee is looking for a new job as well as the probability that a candidate would be interesting in working for the company.  The ultimate goal of this ADS is to determine which trainees should be invited to interview for data science positions at the company.
+As as a result of this trend, the Automated Decision System (ADS) that we chose to examine is from the Human Resources and hiring space.  In particular, we wish to examine a top entry from an HR Analytics Kaggle competition published \href{https://www.kaggle.com/code/joshuaswords/awesome-hr-data-visualization-prediction/notebook}{here}.  The source of these data come from a company active in the big data and data science industries that is looking to hire data scientists amongst a group of candidates who have taken training courses hosted by the company.  Many candidates sign up for training and the firm would like to know which trainees would be interested in working for the company and which are currently looking for new employment.  Targeting these candidates reduces costs and time associated with hiring data scientists.  In addition, a model of this kind would also help improve the quality of these trainings and the planning of courses that might further help categorize candidates in the future.  The desired outcome of this model is to accurately predict the probability that a given trainee is on the job market and is actively looking for a new position.  The ultimate action taken as a result of this ADS is determining which trainees should be invited to interview for data science positions at the company.
 
+-- ** add a section about understanding the factors that lead a data scientist to look for a new job** --
 
-In the course of our analysis, we will examine the data, the cleaning process, and the system to evaluate whether the ADS discriminates on the basis of gender or socioeconomic status. If present, such discrimination could result in certain groups of  employees receiving less frequent training, promotions and other benefits. Our aim is to design a nutritional label for the ADS that examines the bias in the data, the processing, and one ML model used in this ADS. 
-
-Possible trade-offs - candidates looking for a new job might not necessarily be interested in working for the company.  Candidates looking for a new job and interested in the company might not necessarily be the best candidates for DS roles at the company.
-
-\begin{itemize}
-\item What is the purpose of this ADS and it's stated goals
-\item If the ADS has multiple goals, explain any trade-offs that these goals may introduce.
-\end{itemize}
-
+In the course of our analysis, we will examine these data, the cleaning process, and the system itself in order to evaluate whether the ADS discriminates on the basis of gender or socioeconomic status. If present, such discrimination could result in certain groups of employees receiving less rigorous training, fewer promotions and denied access to other benefits. Our aim is to design a ``nutritional label" for the ADS that examines the bias in the data, the processing, and one machine learning model used in this decision\-making process. 
 
 \pagebreak
 
 \section{Input and Output}
 
-These data, made available by the company, are designed to understand the factors that lead a data scientist to search for a new job.  Important information pertaining to demographics, education and prior experience is made available (on an anonymized basis) from registered and enrolled candidates.  There is little information available about the geography of the candidate population in question or even the time during which this data was collected however we can discern from the data that they represent 123 different cities of varying levels of development.  The training dataset for the ADS comprises 19,158 candidates with the following 14 features describing each:
-
+These data, made available by the company, are designed to understand the factors that lead a data scientist to search for a new job.  Important information pertaining to demographics, education and prior experience is made available (on an anonymized basis) from registered and enrolled candidates.  There is little information available about the geography of the candidate population in question or even the time during which these data were collected however we can discern from that they represent job candidates from 123 different cities of varying levels of development.  The training dataset for the ADS comprises 19,158 candidates with the following 14 features describing each:
 
 
 \begin{table}[h]
@@ -95,9 +87,9 @@ target 		& 0 - Not looking for job change, 1 – Looking for a job change\\
 
 
 
-The majority of these features are categorical (Nominal, Ordinal, Binary) some with high cardinality. The exceptions are ``city\_development\_index" and ``training hours" both of which are numeric. Other variables such as ``experience" and ``company\_size" which could potentially be numeric, are presented as aggregated categorical variables such as '50-99', '$<$10', '10000+', '5000-9999', '1000-4999', '10-49', '100-500', '500-999'. 
+The majority of these features are categorical(Nominal, Ordinal, Binary), some with high cardinality. The exceptions are ``city\_development\_index" and ``training hours" both of which are numeric. Other variables such as ``experience" and ``company\_size" which could potentially be numeric, are presented as aggregated categorical variables such as `50-99', `$<$10', `10000+', `5000-9999', `1000-4999', `10-49', `100-500', and `500-999'. 
 
-Some features have large proportions of missing values, particularly 'gender', 'company\_type' and 'company\_size'.
+Some features have large proportions of missing values, particularly ``gender", ``company\_type" and `company\_size".
 
 
 
@@ -147,7 +139,7 @@ In terms of relative distributions, this dataset is largely imbalanced on our ta
 
 
 
-The output of this ADS comes from a Logistic regression that was trained on a synthetically upsampled data set to correct for the datasets imbalance in the target variable.  As a result, the output can be interpreted as the probability of a candidate being on the job market (or of having a target value equal to 1).
+The output of this ADS comes from a logistic regression model that was trained on a synthetically upsampled data set to correct for imbalance in the target variable.  As a result, the output can be interpreted as a numeric value between 0 and 1 that represents the probability of a candidate being on the job market (or of having a target value equal to 1).
 
 
 
@@ -155,7 +147,16 @@ The output of this ADS comes from a Logistic regression that was trained on a sy
 
 \section{Implementation and Validation}
 
-The ultimate model used for this RDS is a logistic regression trained on a dataset that was augmented using the Synthetic Minority Oversampling Technique (SMOTE).  Prior to training the model however, the creator made several choices pertaining to the preparation and pre-processing of the data that had an ultimate impact on it's results.
+The ultimate model used for this ADS is a logistic regression trained on a dataset that was augmented using the Synthetic Minority Oversampling Technique (SMOTE).  Prior to training the model however, the creator made several choices pertaining to the preparation and pre-processing of the data that had an ultimate impact on its final results.
+
+\begin{enumerate}
+	\item data cleaning
+	\item SMOTE
+	\item models that were trained
+	\item regularization/hyper parameter tuning if any
+	\item how model was validated - against what dataset
+	\item measured performance on following metrics
+\end{enumerate}
 
 
 
