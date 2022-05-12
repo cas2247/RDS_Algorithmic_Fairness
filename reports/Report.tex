@@ -174,15 +174,12 @@ The overwhelming majority of candidates in the dataset are male, representing ne
 
 While job seekers and non-job seekers share similar distributions on many features, there are several key differences that might provide some insight on factors that motivate candidates to search for new roles.  In particular, a smaller proportion of job seekers seem to have relevant data science experience, indicating that professionals outside of the field might be motivated to switch to careers in the growing data science industry.  Similarly, job seekers are much more likely to be full-time students looking for positions after graduation.  This might also explain why many job-seekers do not supply information about their current company since they may not be currently employed. The gender distribution between candidates actively searching and those who are not appear roughly the same, with a slighter greater share of applicants not reporting their gender.  In general, job seekers are also less experienced than their peers not on the job market and if employed, have been in the current role for 4 years or longer. 
 
-Interestingly, job-seekers 
+Interestingly, job seekers are much more likely to come from cities with lower development indices.  In addition, experienced trainees overwhelmingly live in developed cities much more so than their peers staring out in the workforce.  This suggests the narrative that experienced candidates migrate to more developed centers and that job seekers might be motivated to do the same through a change of employment.
 
 
-
-
-
-
-
-
+\begin{center}
+\includegraphics[width=0.95\textwidth]{download-1}
+\end{center}
  
 
 The output of this ADS comes from a logistic regression model that was trained on a synthetically upsampled data set to correct for imbalance in the target variable.  While the output of the machine learning model is a probability of the candidate being on the job market, the output of this ADS is a class label (either `Job Seeking' or `Not Job Seeking') that assumes that candidates with predicted probabilities above a threshold of 0.5 are looking for a job.
@@ -285,6 +282,9 @@ city development		 & 0.19 & 0.13\\
 \pagebreak
 
 \section{Conclusion \& Summary}
+
+
+
 \begin{itemize}
 \item Do you believe that the data was appropriate for this ADS?  
 \item Do you believe the implementation is robust, accurate and fair?  Discuss any choice of accuracy and fairness measures and explain which stakeholders may find these measures appropriate.
