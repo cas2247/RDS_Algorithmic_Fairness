@@ -20,6 +20,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{textcomp}
 \usepackage{graphicx} 
+\graphicspath{ {images/} }
+\usepackage{wrapfig}
 \usepackage{amsmath,amssymb}  
 \usepackage{bm}  
 \usepackage[pdftex,bookmarks,colorlinks,breaklinks]{hyperref}  
@@ -102,12 +104,18 @@ target 		& 0 - Not looking for job change, 1 – Looking for a job change\\
 \end{table}
 
 
+%\begin{wrapfigure}{r}{0.45\textwidth}
+%    \centering
+%    \includegraphics[width=0.45\textwidth]{missing_values}
+%\end{wrapfigure}
 
-The majority of these features are categorical(Nominal, Ordinal, Binary), some with high cardinality. The exceptions are ``city\_development\_index" and ``training hours" both of which are numeric. 
+\begin{center}
+\includegraphics[width=0.45\textwidth]{missing_values}
+\end{center}
 
-Some features have large proportions of missing values, particularly ``gender", ``company\_type" and `company\_size".
+The majority of these features are categorical(Nominal, Ordinal, Binary), some with high cardinality. The exceptions are \emph{city\_development\_index} and \emph{training hours} both of which are numeric. Some features have large proportions of missing values, particularly \emph{company\_type}, \emph{company\_size} and \emph{gender}.
 
-
+\vspace{250px}
 
 
 
@@ -145,16 +153,37 @@ target 		 & int64 & 2 & 0.0 \% \\
 \end{table}
 
 
-In terms of relative distributions, this dataset is largely imbalanced on our target variable with 75\% of candidates not seeking a new job and only 25\% actively on the job market.  Discuss distributions.....
+In terms of relative distributions, this dataset is largely imbalanced on our target variable with 75\% of candidates not seeking a new job and only 25\% actively on the job market.  This imbalance is significant in that it will impact the choice of modeling and necessary data preparation steps of the decision system.
+
+\begin{wrapfigure}{l}{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.45\textwidth]{download}
+\end{wrapfigure}
+
+%\vspace{2px}
+
+
+\vspace{10px}
+The overwhelming majority of candidates in the dataset are male, representing nearly 70\% of the total population. Similarly the majority of trainees have prior data science experience and at least an undergraduate degree in a STEM field.  The candidate pool is also largely experienced in the workforce with 60\% having 10 or more years of experience. The majority of candidates competed 47 hours of training or less with a long right tail.  While a large portion of candidates come from cities with development indices, there is another pool of candidates that comes from cities with an index just above 0.6. The full set of distribution plots and exploratory data analysis of each feature in the dataset can be found \href{https://github.com/cas2247/RDS_Algorithmic_Fairness/blob/main/notebooks/1_Input_and_Output.ipynb}{here}.
+
+
+\begin{wrapfigure}{r}{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.45\textwidth]{continuous_distributions_target}
+\end{wrapfigure}
+
+While job seekers and non-job seekers share similar distributions on many features, there are several key differences that might provide some insight on factors that motivate candidates to search for new roles.  In particular, a smaller proportion of job seekers seem to have relevant data science experience, indicating that professionals outside of the field might be motivated to switch to careers in the growing data science industry.  Similarly, job seekers are much more likely to be full-time students looking for positions after graduation.  This might also explain why many job-seekers do not supply information about their current company since they may not be currently employed. The gender distribution between candidates actively searching and those who are not appear roughly the same, with a slighter greater share of applicants not reporting their gender.  In general, job seekers are also less experienced than their peers not on the job market and if employed, have been in the current role for 4 years or longer. 
+
+Interestingly, job-seekers 
 
 
 
-\begin{itemize}
-	\item Describe the data used by this ADS.  How was this data collected or selected?
-	\item For each input feature, describe its datatype, give information on missing values and on the value distribution. Show pairwise correlations between features if appropriate.  Run any other reasonable profiling of the input that you find interesting or appropriate
-	\item What is the output of the system (e.g. is it a class label, a score, a probability or some other type of output) and how do we interpret it?
-\end{itemize}
 
+
+
+
+
+ 
 
 The output of this ADS comes from a logistic regression model that was trained on a synthetically upsampled data set to correct for imbalance in the target variable.  While the output of the machine learning model is a probability of the candidate being on the job market, the output of this ADS is a class label (either `Job Seeking' or `Not Job Seeking') that assumes that candidates with predicted probabilities above a threshold of 0.5 are looking for a job.
 
@@ -263,6 +292,10 @@ city development		 & 0.19 & 0.13\\
 \item What improvements do you recommend to the data collection, processing or analysis methodology?
 \end{itemize}
 
+
+All of the code and analysis for this report can be found \href{https://github.com/cas2247/RDS_Algorithmic_Fairness}{here}.
+
+
 \begin{thebibliography}{9}
 
 
@@ -276,8 +309,6 @@ city development		 & 0.19 & 0.13\\
 \bibitem{joshuaswords_2021}Joshuaswords HR data visualization \& prediction. {\em Kaggle}. (April 2021), https://www.kaggle.com/code/joshuaswords/awesome-hr-data-visualization-prediction/data
 
 \bibitem{10.1145/3340531.3411980}Yan, S., Kao, H. \& Ferrara, E. Fair Class Balancing: Enhancing Model Fairness without Observing Sensitive Attributes. {\em Proceedings Of The 29th ACM International Conference On Information \& Knowledge Management}. pp. 1715-1724 (2020), https://doi.org/10.1145/3340531.3411980
-
-
 
 \end{thebibliography}
 
