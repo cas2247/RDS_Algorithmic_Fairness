@@ -48,7 +48,7 @@ In the course of our analysis, we will examine these data, the cleaning process,
 
 \section{Input and Output}
 
-These data, made available by the company, are designed to understand the factors that lead a data scientist to search for a new job.  Important information pertaining to demographics, education and prior experience is made available (on an anonymized basis) from registered and enrolled candidates.  There is little information available about the geography of the candidate population in question or even the time during which these data were collected however we can discern from that they represent job candidates from 123 different cities of varying levels of development.  The training dataset for the ADS comprises 19,158 candidates with the following 14 features describing each:
+These data, made available by the company, are designed to understand the factors that lead a data scientist to search for a new job.  Important information pertaining to demographics, education and prior experience is made available (on an anonymized basis) from registered and enrolled candidates.  There is little information available about the geography of the candidate population in question or even the time during which these data were collected however we can discern from that they represent job candidates from 123 different cities of varying levels of development.  The total dataset for the ADS comprises 19,158 candidates with the following 14 features describing each:
 
 
 \begin{table}[h]
@@ -86,9 +86,11 @@ target 		& 0 - Not looking for job change, 1 – Looking for a job change\\
 
 
 
-The majority of these features are categorical(Nominal, Ordinal, Binary), some with high cardinality. The exceptions are ``city\_development\_index" and ``training hours" both of which are numeric. Other variables such as ``experience" and ``company\_size" which could potentially be numeric, are presented as aggregated categorical variables such as `50-99', `$<$10', `10000+', `5000-9999', `1000-4999', `10-49', `100-500', and `500-999'. 
+The majority of these features are categorical(Nominal, Ordinal, Binary), some with high cardinality. The exceptions are ``city\_development\_index" and ``training hours" both of which are numeric. 
 
 Some features have large proportions of missing values, particularly ``gender", ``company\_type" and `company\_size".
+
+
 
 
 
